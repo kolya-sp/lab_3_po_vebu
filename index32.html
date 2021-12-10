@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        p {
+            margin: 1em;
+        }
+        html, body {
+            display: flex;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+        .flex-container{
+            display: flex;
+            background-color: yellow;
+            flex-direction: column;
+        }
+        #d1{
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            flex-basis: 25%;
+            background-color: #c6d9f1;
+            outline: 2px solid;
+            justify-content: flex-end;
+            align-items: center;
+            min-height: 5vh;
+        }
+        #d2-6{
+            display: flex;
+            background-color: darkgreen;
+            flex-direction: row;
+            margin: auto;
+        }
+        #d2{
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            flex-basis: 25%;
+            background-color:#eaf1dd;
+            outline: 2px solid;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: right;
+            min-height: 100%;
+            min-width: 25vh;
+        }
+        #d3-6{
+            display: flex;
+            background-color:red;
+            flex-direction: column;
+
+            margin: auto;
+        }
+        #d3-5{
+            display: flex;
+            background-color: deeppink;
+            flex-basis: 66%;
+            flex-direction: row;
+        }
+        #d6{
+            display: flex;
+            padding: 5px;
+            background-color:#c6d9f1;
+            outline: 2px solid;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        #d3{
+            padding: 10px;
+            background-color: white;
+            flex-basis: 66%;
+            outline: 2px solid;
+            /*display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;*/
+        }
+        #d4-5{
+            display: flex;
+            background-color: darkgreen;
+            flex-basis: 34%;
+            flex-direction: column;
+        }
+        #d4{
+            padding: 10px;
+            background-color: #eaf1dd;
+            flex-basis: 50%;
+            outline: 2px solid;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        #d5{
+            padding: 10px;
+            background-color: #fde9d9;
+            flex-basis: 50%;
+            outline: 2px solid;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        #x, #y{
+            flex:0 0 30%;
+            margin: 1em;
+            background-color: white;
+            outline: 2px solid;
+            height: auto;
+            margin-right: auto;
+            text-align: right;
+        }
+        #d3 {
+            padding: 10px;
+            text-align: center;
+            outline: 2px solid;
+        }
+        #text1{
+            padding: 1em;
+            text-align: justify;
+        }
+        #im2{
+        }
+        #d7 {
+        }
+        /* Style the button that is used to open and close the collapsible content */
+        /*.collapsible {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }*/
+
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        /*.active, .collapsible:hover {
+            background-color: #ccc;
+        }
+        .collapsible:visited + div {
+            display: none;
+        }*/
+
+        .switchable{
+            display: block;
+            border: 1px solid black;
+            max-width: max-content;
+            background-color: greenyellow;
+        }
+        .switchable + input {
+            display:none;
+        }
+        .switchable + input:checked +div {
+            display:none;
+        }
+        /* Style the collapsible content. Note: hidden by default */
+        /*.content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+
+
+</style>
+</head>
+<body>
+<div class="flex-container">
+        <div id="d1">
+            <div id="x">
+                x
+            </div>
+            1
+        </div>
+        <div id="d2-6">
+            <div id="d2">
+                2
+                <ul>
+                    <li>сонце</li>
+                    <li>небо</li>
+                    <li>земля</li>
+                    <li>вода</li>
+                    <li>вогонь</li>
+                </ul>
+                <ol>
+                    <li>один</li>
+                    <li>два</li>
+                    <li>три</li>
+                    <li>чотири</li>
+                    <li>п'ять</li>
+
+                </ol>
+
+            </div>
+            <div id="d3-6">
+                <div id="d3-5">
+                    <div id="d3">
+                        3
+                        <div id = "d7">
+							вміст div id="d7"
+                        </div>
+                    </div>
+                    <div id="d4-5">
+                        <div id="d4">
+                            4
+                            <img src="data:image/jpeg;base64,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">
+                        </div>
+                        <div id="d5">
+                            5
+                            <img src="https://schoolsw3.com/html/workplace.jpg" alt="Workplace" usemap="#workmap" width="400" height="379">
+                            <map name="workmap">
+                                <area shape="rect" coords="34,44,270,350" alt="Computer" href="index1.html">
+                                <area shape="rect" coords="290,172,333,250" alt="Phone" href="index3.html">
+                                <area shape="circle" coords="337,300,44" alt="Cup of coffee" href="index5.html">
+                            </map>
+                        </div>
+                    </div>
+                </div>
+                <div id="d6">
+                    <div id="y">
+                        y
+                    </div>
+                    <p>Национальный технический университет Украины «Киевский политехнический институт имени Игоря Сикорского» (сокращённо КПИ) (укр. Національний технічний університет України «Київський політехнічний інститут імені Ігоря Сікорського») — один из самых крупных украинских университетов. В его состав входят 18 факультетов, 7 учебно-научных институтов (в том числе один военный), совместный факультет машиностроения, филиал в городе Славутиче, 15 научно-исследовательских институтов и научных центров, конструкторское бюро и другие структуры.
+
+                        Осуществляется подготовка бакалавров (по 125 специальностям), специалистов (по 115 специальностям), магистров инженерии, магистров, кандидатов наук, докторов наук. Среди преподавательского состава — 10 академиков и членов-корреспондентов НАН Украины, более 500 профессоров, более 1300 доцентов[1].
+
+                        В университете работает подготовительное отделение, на котором иностранные слушатели на протяжении 10 месяцев изучают украинский, русский или английский языки, математику, физику, биологию и прочие дисциплины в объёме, необходимом для дальнейшего овладения университетской программой.
+
+                        Университет создан, работает и развивается уже 120 лет как кампус, в котором на одной территории в 160 гектаров органически объединены условия для обучения, занятия спортом, отдыха и занятия личными увлечениями всего 50-тысячного коллектива. За время своего существования КПИ подготовил почти 370 тысяч специалистов, из них 60 тысяч — в период независимости Украины. Летом 2016 года ВУЗ получил имя знаменитого авиаконструктора Игоря Сикорского.</p>
+                    6
+                </div>
+            </div>
+        </div>
+
+</div>
+<script>
+	window.addEventListener("load", zagruzka_danih);
+    function zagruzka_danih() {	
+		d7=document.getElementById("d7");
+        fetch("http://localhost:3000/load")
+           .then(response => response.text())
+           .then(responseText => d7.innerHTML=JSON.parse(responseText));		
+    }
+</script>
+</body>
+</html>

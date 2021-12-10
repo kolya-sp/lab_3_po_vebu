@@ -1,0 +1,3 @@
+сервер прослуховує http://localhost:3000
+сторінка адміна http://localhost:3000/admin
+сторінка клієнту http://localhost:3000/client
